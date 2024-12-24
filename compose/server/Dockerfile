@@ -1,0 +1,37 @@
+FROM elixir:1.17.3-alpine as base
+
+# Install build dependencies
+RUN apk add --no-cache \
+    git \
+    build-base \
+    bash \
+    inotify-tools
+
+# Create the /project_name directory before switching users
+RUN mkdir /server
+
+# Set the working directory
+WORKDIR /server
+
+# cp project files
+
+COPY ./server .
+
+# cp entrypoint.sh
+
+COPY ./compose/server/entrypoint.sh /usr/bin/entrypoint.sh
+
+# add execute permission
+
+RUN chmod +x /usr/bin/entrypoint.sh
+
+
+EXPOSE 4000
+
+FROM base as dev
+
+# deps
+
+RUN mix deps.get
+
+ENTRYPOINT [ "entrypoint.sh" ]
