@@ -19,11 +19,11 @@ COPY ./server .
 
 # cp entrypoint.sh
 
-COPY ./entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./entrypoint /usr/bin/entrypoint
 
 # add execute permission
 
-RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint
 
 
 EXPOSE 4000
@@ -34,4 +34,4 @@ FROM base as dev
 
 RUN mix deps.get
 
-ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "entrypoint" ]
