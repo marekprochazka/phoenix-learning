@@ -19,7 +19,7 @@ COPY ./server .
 
 # cp entrypoint.sh
 
-COPY ./compose/server/entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./entrypoint.sh /usr/bin/entrypoint.sh
 
 # add execute permission
 

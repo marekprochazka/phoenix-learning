@@ -22,7 +22,7 @@ services:
     image: phx-server
     build: 
       context: .
-      dockerfile: compose/server/Dockerfile
+      dockerfile: Dockerfile.server
       target: dev
     env_file:
       - envs/server/.env.dev
