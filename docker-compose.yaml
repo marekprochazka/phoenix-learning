@@ -1,6 +1,11 @@
 volumes:
   pg-data: {}
 
+networks:
+  traefik-net:
+    external: true
+
+
 services:
   db:
     image: postgres:16
@@ -30,5 +35,14 @@ services:
       - "${SERVER_PORT:-4000}:4000"
     depends_on:
       - db
+    networks:
+      - traefik-net
+      - default
     volumes:
       - ./server:/server
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-net"
+      - "traefik.http.routers.phx.rule=Host(`phx.docker.localhost`)"
+      - "traefik.http.routers.phx.tls=true"
+      - "traefik.http.services.phx.loadbalancer.server.port=4000"
