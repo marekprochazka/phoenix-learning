@@ -1,4 +1,4 @@
-defmodule Server.Application do
+defmodule RPS.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,21 +8,21 @@ defmodule Server.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      ServerWeb.Telemetry,
-      Server.Repo,
-      {DNSCluster, query: Application.get_env(:server, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: Server.PubSub},
+      RPSWeb.Telemetry,
+      RPS.Repo,
+      {DNSCluster, query: Application.get_env(:rps, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: RPS.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: Server.Finch},
+      {Finch, name: RPS.Finch},
       # Start a worker by calling: Server.Worker.start_link(arg)
       # {Server.Worker, arg},
       # Start to serve requests, typically the last entry
-      ServerWeb.Endpoint
+      RPSWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Server.Supervisor]
+    opts = [strategy: :one_for_one, name: RPS.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -30,7 +30,7 @@ defmodule Server.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    ServerWeb.Endpoint.config_change(changed, removed)
+    RPSWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

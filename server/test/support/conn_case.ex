@@ -1,4 +1,4 @@
-defmodule ServerWeb.ConnCase do
+defmodule RPSWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,19 +20,19 @@ defmodule ServerWeb.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint ServerWeb.Endpoint
+      @endpoint RPSWeb.Endpoint
 
-      use ServerWeb, :verified_routes
+      use RPSWeb, :verified_routes
 
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import ServerWeb.ConnCase
+      import RPSWeb.ConnCase
     end
   end
 
   setup tags do
-    Server.DataCase.setup_sandbox(tags)
+    RPS.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

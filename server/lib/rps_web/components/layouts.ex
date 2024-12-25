@@ -1,4 +1,4 @@
-defmodule ServerWeb.Layouts do
+defmodule RPSWeb.Layouts do
   @moduledoc """
   This module holds different layouts used by your application.
 
@@ -8,7 +8,7 @@ defmodule ServerWeb.Layouts do
   layout on both `use ServerWeb, :controller` and
   `use ServerWeb, :live_view`.
   """
-  use ServerWeb, :html
+  use RPSWeb, :html
 
   embed_templates "layouts/*"
 end

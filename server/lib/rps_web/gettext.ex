@@ -1,4 +1,4 @@
-defmodule ServerWeb.Gettext do
+defmodule RPSWeb.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
@@ -21,5 +21,5 @@ defmodule ServerWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext.Backend, otp_app: :server
+  use Gettext.Backend, otp_app: :rps
 end

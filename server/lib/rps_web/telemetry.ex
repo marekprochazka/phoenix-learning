@@ -1,4 +1,4 @@
-defmodule ServerWeb.Telemetry do
+defmodule RPSWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 

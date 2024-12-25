@@ -1,10 +1,10 @@
-defmodule ServerWeb.PageHTML do
+defmodule RPSWeb.PageHTML do
   @moduledoc """
   This module contains pages rendered by PageController.
 
   See the `page_html` directory for all templates available.
   """
-  use ServerWeb, :html
+  use RPSWeb, :html
 
   embed_templates "page_html/*"
 end

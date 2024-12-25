@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :server, Server.Repo,
+config :rps, RPS.Repo,
   username: System.get_env("DB_USER"),
   password: System.get_env("DB_PWD"),
   hostname: System.get_env("DB_HOST"),
@@ -16,7 +16,7 @@ config :server, Server.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :server, ServerWeb.Endpoint,
+config :rps, RPSWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {0, 0, 0, 0}, port: System.get_env("PORT") || 4000],
@@ -53,17 +53,17 @@ config :server, ServerWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :server, ServerWeb.Endpoint,
+config :rps, RPSWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/server_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/rps_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :server, dev_routes: true
+config :rps, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

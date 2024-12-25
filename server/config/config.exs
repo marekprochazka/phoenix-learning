@@ -7,19 +7,19 @@
 # General application configuration
 import Config
 
-config :server,
-  ecto_repos: [Server.Repo],
+config :rps,
+  ecto_repos: [RPS.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :server, ServerWeb.Endpoint,
+config :rps, RPSWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: ServerWeb.ErrorHTML, json: ServerWeb.ErrorJSON],
+    formats: [html: RPSWeb.ErrorHTML, json: RPSWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Server.PubSub,
+  pubsub_server: RPS.PubSub,
   live_view: [signing_salt: "Vf26QrC0"]
 
 # Configures the mailer
@@ -29,7 +29,7 @@ config :server, ServerWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :server, Server.Mailer, adapter: Swoosh.Adapters.Local
+config :rps, RPS.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

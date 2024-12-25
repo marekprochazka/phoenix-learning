@@ -1,5 +1,5 @@
-defmodule ServerWeb.HelloController do
-  use ServerWeb, :controller
+defmodule RPSWeb.HelloController do
+  use RPSWeb, :controller
 
   def index(conn, _params) do
     render(conn, :index)

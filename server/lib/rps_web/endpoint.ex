@@ -1,5 +1,5 @@
-defmodule ServerWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :server
+defmodule RPSWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :rps
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -21,9 +21,9 @@ defmodule ServerWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :server,
+    from: :rps,
     gzip: false,
-    only: ServerWeb.static_paths()
+    only: RPSWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -31,7 +31,7 @@ defmodule ServerWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :server
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :rps
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
@@ -49,5 +49,5 @@ defmodule ServerWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug ServerWeb.Router
+  plug RPSWeb.Router
 end

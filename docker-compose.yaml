@@ -43,6 +43,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik-net"
-      - "traefik.http.routers.phx.rule=Host(`phx.docker.localhost`)"
-      - "traefik.http.routers.phx.tls=true"
-      - "traefik.http.services.phx.loadbalancer.server.port=4000"
+      - "traefik.http.routers.rps.rule=Host(`rps.docker.localhost`)"
+      - "traefik.http.routers.rps.tls=true"
+      - "traefik.http.services.rps.loadbalancer.server.port=4000"

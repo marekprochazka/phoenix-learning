@@ -1,5 +1,5 @@
-defmodule ServerWeb.PageControllerTest do
-  use ServerWeb.ConnCase
+defmodule RPSWeb.PageControllerTest do
+  use RPSWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

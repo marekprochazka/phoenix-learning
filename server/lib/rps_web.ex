@@ -1,4 +1,4 @@
-defmodule ServerWeb do
+defmodule RPSWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
@@ -40,9 +40,9 @@ defmodule ServerWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: ServerWeb.Layouts]
+        layouts: [html: RPSWeb.Layouts]
 
-      use Gettext, backend: ServerWeb.Gettext
+      use Gettext, backend: RPSWeb.Gettext
 
       import Plug.Conn
 
@@ -53,7 +53,7 @@ defmodule ServerWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {ServerWeb.Layouts, :app}
+        layout: {RPSWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -83,12 +83,12 @@ defmodule ServerWeb do
   defp html_helpers do
     quote do
       # Translation
-      use Gettext, backend: ServerWeb.Gettext
+      use Gettext, backend: RPSWeb.Gettext
 
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components
-      import ServerWeb.CoreComponents
+      import RPSWeb.CoreComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -101,9 +101,9 @@ defmodule ServerWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: ServerWeb.Endpoint,
-        router: ServerWeb.Router,
-        statics: ServerWeb.static_paths()
+        endpoint: RPSWeb.Endpoint,
+        router: RPSWeb.Router,
+        statics: RPSWeb.static_paths()
     end
   end
 
