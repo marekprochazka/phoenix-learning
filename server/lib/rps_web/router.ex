@@ -2,7 +2,7 @@ defmodule RPSWeb.Router do
   use RPSWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {RPSWeb.Layouts, :root}
@@ -18,8 +18,10 @@ defmodule RPSWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/healthcheck", HealthcheckController, :index
     get "/hello", HelloController, :index
     get "/hello/:name", HelloController, :hello
+    get "/redirect", PageController, :redirect_test
   end
 
   # Other scopes may use custom stacks.
